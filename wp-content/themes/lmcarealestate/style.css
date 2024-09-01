@@ -214,3 +214,75 @@ body .es-field.es-field--select label .es-field__label {
     border-radius: 0;
     background: #636363;
 }
+
+.es-listing {
+    box-shadow: none;
+}
+.es-listing ul.es-listing__meta {
+    justify-content: space-between;
+    padding: 0 10px !important;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+.es-listing .es-listing__meta li {
+    font-family: "Roboto", Sans-serif, serif !important;
+    font-size: 14px !important;
+    line-height: 14px !important;
+    font-weight: 300;
+    fill: #FFFFFF;
+    color: #FFFFFF;
+    background-color: #696969;
+    border-radius: 0;
+    padding: 7px !important;
+    margin: 0 !important;
+}
+.es-listing .es-listing__meta li b {
+    font-weight: 300 !important;
+}
+.es-listing .es-listing__title,
+.es-listing .es-listing__title a {
+    color: #323232;
+    font-family: "Cormorant", Sans-serif, serif;
+    font-size: 23px !important;
+    font-weight: 300 !important;
+    line-height: 1em;
+}
+.es-listing .es-referencia {
+    color: #323232;
+    font-family: "Roboto", Sans-serif, serif;
+    font-size: 15px;
+    font-weight: 200;
+}
+.es-listing .es-price {
+    color: #323232;
+    font-family: "Roboto", Sans-serif, serif;
+    font-size: 19px !important;
+}
+.es-listing .es-referencia,
+.es-listing .es-price {
+    margin: 0 !important;
+    line-height: 1;
+}
+.es-listing .es-badges {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.es-listing .es-listing-link {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    font-family: "Roboto", Sans-serif, serif;
+    font-size: 14px;
+    line-height: 14px;
+    font-weight: 300;
+    color: #FFFFFF;
+    background: #5C5C5C;
+    border-radius: 0;
+    padding: 10px 7px;
+}
+.es-listing .es-listing-link:hover {
+    background: #4B4B4B;
+    transform: scale(1.05);
+}

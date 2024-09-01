@@ -298,6 +298,150 @@ function es_search_render_field_custom( $field, $attributes = array(), $force_ty
 }
 add_action( 'es_search_render_field_custom', 'es_search_render_field_custom', 10, 2 );
 
+/**
+ * @param $field
+ * @param $formatter
+ * @param null $value
+ *
+ * @return string
+ */
+function es_get_the_formatted_field_custom( $field, $formatter, $value = null ) {
+
+    /** @var Es_Settings_Container $es_settings */
+    global $es_settings;
+
+    $result = es_get_the_property_field( $field );
+
+    switch( $formatter ) {
+        case 'price':
+            if ( ! $result && ! strlen( $result ) ) break;
+
+            // Get position of the currency.
+            $position = $es_settings->currency_position;
+            // Get currency name using currency code.
+            $currency = $es_settings->get_label( 'currency', $es_settings->currency );
+            // Get price format.
+            $format = $es_settings->price_format;
+
+            $price_temp = ! $result ? 0 : $result;
+
+            $sup = ! empty( $format[0] ) ? $format[0] : null;
+            $dec = ! empty( $format[1] ) ? $format[1] : null;
+
+            $dec_num = $sup == ' ' || $sup == ',' || $sup == '.' ? 0 : 2;
+            $dec_num = $format == ',.' || $format == '.,' ? 2 : $dec_num;
+
+            if ( $currency == 'RUB' ) {
+                $currency = '<i class="fa fa-rub" aria-hidden="true"></i>';
+            }
+
+            $price_temp = floatval( $price_temp );
+            $price_temp = number_format( $price_temp, $dec_num, $dec, $sup );
+
+            $result = $position == 'after' ? $price_temp . ' ' . $currency : $currency . ' ' . $price_temp;
+            break;
+
+        case 'bedrooms':
+            if ( $result ) {
+                $unit = $result > 1 ? __( '%g beds', 'es-plugin' ) : __( '%g bed', 'es-plugin' );
+                $result =  sprintf( $unit, $result );
+            }
+            break;
+
+        case 'bathrooms':
+            if ( $result ) {
+                $unit = $result > 1 ? __( '%g baths', 'es-plugin' ) : __( '%g bath', 'es-plugin' );
+                $result = sprintf( $unit, $result );
+            }
+            break;
+
+        case 'area':
+            if ( ! $result && ! strlen( $result ) ) break;
+            $es_property = es_get_property( null );
+            $fields = $es_property::get_fields();
+
+            $unit = ! empty( $fields[ $field ]['units'] ) ? es_get_the_property_field( $fields[ $field ]['units'] ) : null;
+            $unit = $unit ? $unit : $es_settings->unit;
+            $unit = $unit ? $es_settings->get_label( 'unit', $unit ) : null;
+
+            $result = $result . ' ' . $unit;
+            break;
+
+        case 'url':
+            if ( $result ) {
+
+                if ( is_array( $result ) ) {
+                    $url = ! empty( $result['url'] ) ? $result['url'] : null;
+                    $label = ! empty( $result['label'] ) ? $result['label'] : $url;
+                }
+
+                if ( is_string( $result ) ) {
+                    $url = $result;
+                    $label = $result;
+                }
+
+                if ( ! empty( $url ) && ! empty( $label ) ) {
+                    $result = "<a class='es-url-link es-url-link-{$field}' target='_blank' href='" . esc_url( $url ) . "'>{$label}</a>";
+                } else {
+                    $result = null;
+                }
+            } else {
+                $result = null;
+            }
+
+            break;
+
+        case 'file':
+            $entity_field_info = Es_Property::get_field_info( $field );
+
+            if ( $result && ( $attachment = wp_get_attachment_url( $result ) ) ) {
+                $finfo = pathinfo( $attachment );
+
+                if ( ! empty( $entity_field_info['show_thumbnail'] ) ) {
+                    if ( ! function_exists( 'file_is_valid_image' ) ) {
+                        require_once( ABSPATH . 'wp-admin/includes/image.php' );
+                    }
+
+                    if ( wp_attachment_is_image( $result ) ) {
+                        $file = '<a href="' . $attachment . '" class="js-magnific-gallery">' . wp_get_attachment_image( $result, 'es-image-size-archive' ) . '</a>';
+                    } else {
+                        $file = '<a href="' . $attachment . '" target="_blank">' . es_get_file_icon( $finfo['basename'] ) . '</a>';
+                    }
+
+                    return  array( 'markup' => sprintf("<li class='es-file__wrap'>
+                                <div class='es-file__content'>%s</div>
+                                <span class='es-file__label'><b>%s</b></span>
+                            </li>",$file, ! empty( $entity_field_info['label'] ) ? $entity_field_info['label']  : null ) );
+                } else {
+                    $icon = es_get_file_icon( $finfo['basename'] );
+                    $icon = $icon ? $icon . ' ' : null;
+                    $result = $icon . '<a href="' . $attachment . '" target="_blank">' .$finfo['basename'] . '</a>';
+                }
+            }
+            break;
+
+        case 'html':
+            $result = wpautop( $result );
+            break;
+
+        case 'locality':
+        case 'location':
+            $entity_field_info = Es_Property::get_field_info( $field );
+            if ( ! empty( $entity_field_info['components_types'] ) ) {
+                foreach ( $entity_field_info['components_types'] as $type ) {
+                    if ( $component = ES_Address_Components::get_property_component( get_the_ID(), $type ) ) {
+                        $result = $component->long_name;
+                        break;
+                    }
+                }
+            }
+
+            break;
+    }
+
+    return apply_filters( 'es_get_the_formatted_field', $result, $field, $formatter );
+}
+
 remove_action( 'es_after_listings', 'es_powered_by' );
 remove_action( 'es_after_single_content', 'es_powered_by' );
 remove_action( 'es_after_authentication', 'es_powered_by' );
