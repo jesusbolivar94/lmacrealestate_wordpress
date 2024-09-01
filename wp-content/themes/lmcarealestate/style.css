@@ -173,3 +173,44 @@ body .es-field.es-field--select label .es-field__label {
 #search-2 button[type="submit"] {
     display: none;
 }
+
+.js-es-listings {
+    margin-bottom: 40px;
+}
+.es-pagination {
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+.es-navigation {
+    display: none !important;
+}
+.es-pagination .page-numbers li .page-numbers,
+.es-pagination ul li .page-numbers,
+.es-pagination ul.page-numbers li .page-numbers {
+    font-family: Roboto, Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    color: #828282;
+    font-weight: 300;
+    border: 1px solid #D6D6D6;
+    border-radius: 0;
+    background: #ffffff;
+}
+.es-pagination .page-numbers li .page-numbers:hover,
+.es-pagination ul li .page-numbers:hover,
+.es-pagination ul.page-numbers li .page-numbers:hover {
+    font-family: Roboto, Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    color: #263238;
+    font-weight: 300;
+    border: 1px solid #D8D8D8;
+    border-radius: 0;
+    background: #D8D8D8;
+}
+.es-pagination .page-numbers li .page-numbers.current,
+.es-pagination ul li .page-numbers.current,
+.es-pagination ul.page-numbers li .page-numbers.current {
+    color: #ffffff;
+    border: 1px solid #636363;
+    border-radius: 0;
+    background: #636363;
+}
