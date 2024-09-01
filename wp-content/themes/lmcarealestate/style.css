@@ -9,3 +9,167 @@ Requires PHP: 5.3
 License: GNU General Public License v2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 */
+
+.lmc-search-simple form {
+    justify-content: space-between;
+}
+
+.lmc-search-simple .es-search__address button.es-btn {
+    border: none !important;
+    background-color: transparent !important;
+    box-shadow: none !important;
+    height: auto;
+}
+
+.lmc-search-simple .es-search__address button.es-btn:hover {
+    opacity: 1 !important;
+}
+
+.lmc-search-simple .es-search__address button.es-btn .es-icon {
+    font-size: 20px !important;
+    color: #AFAFAF !important;
+}
+
+.es-search--simple form .es-search__address {
+    flex: none;
+}
+
+.lmc-search-simple .es-search__address {
+    border: 2px solid #D9D9D9;
+}
+
+.lmc-search-simple .es-search__address .es-field input[type=text] {
+    border: none;
+    height: auto;
+    padding: 6px 8px 6px 0;
+}
+
+.lmc-search-simple .es-search__address .es-field input[type=text]::placeholder {
+    font-family: Roboto, Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    color: #9C9C9C;
+    font-weight: 300;
+}
+
+.lmc-search-simple #es-field-referencia {
+    padding: 0;
+    border: none;
+    background: none;
+    line-height: 1;
+}
+
+.lmc-search-simple #es-field-referencia::placeholder,
+.es-search--simple .es-search-nav.es-search-nav--dropdowns>li>a {
+    font-family: Roboto, Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    color: #828282;
+    font-weight: 300;
+    line-height: 24px;
+}
+
+.es-search--simple .es-search-nav.es-search-nav--dropdowns>li,
+.es-search--simple .es-search-nav.es-search-nav--dropdowns>li.active {
+    border-radius: 0;
+    border: 1px solid #D6D6D6;
+    height: 36px;
+}
+
+.es-search--simple .es-search-nav.es-search-nav--dropdowns> li[data-field="es_type"] {
+    height: auto;
+}
+
+.es-type-li .es-field-row .es-field {
+    margin-bottom: 0;
+}
+
+.es-search--simple .es-search-nav>li.active .es-search-nav__content {
+    box-shadow: none;
+}
+
+.es-field input[type=radio]+label,
+.es-type-li .es-field-row .es-field label {
+    border-radius: 0;
+    border: none;
+    background: #D8D8D8;
+    height: auto;
+}
+.es-field input[type=radio]:checked+label,
+.es-type-li .es-field-row :checked+label,
+.es-type-li .es-field-row .es-field label:hover {
+    background: #636363;
+}
+.es-type-li .es-field-row .es-field .es-field__label {
+    margin: 0;
+}
+
+.es-field.es-field--radio-item-bordered input[type=radio]:checked+label .es-field__label,
+.es-type-li .es-field-row :checked+label .es-field__label,
+.es-type-li .es-field-row .es-field label:hover .es-field__label {
+    color: #ffffff !important;
+}
+
+.es-search--simple .es-search-nav.es-search-nav--dropdowns>li.es-type-li,
+.es-search--simple .es-search-nav.es-search-nav--dropdowns>li.active.es-type-li {
+    border-radius: 0;
+    border: none;
+    padding: 0;
+}
+
+body .es-field .es-field__label,
+body .es-field.es-field--select label .es-field__label {
+    display: none;
+}
+
+.es-listings-filter .es-title,
+.es-listings-filter .es-total {
+    display: none;
+}
+
+.es-field .select2-container .select2-selection--single {
+    border-radius: 0 !important;
+    outline: 0;
+}
+.es-field .select2-container .select2-selection--single .select2-selection__rendered .select2-selection__placeholder,
+.es-field .select2-container .select2-selection .select2-selection__arrow b:before,
+.select2-container--default .select2-selection--single .select2-selection__clear {
+    color: #828282 !important;
+}
+
+.es-custom-sort,
+.es-custom-sort:focus,
+.es-custom-sort:focus-visible {
+    border-radius: 0 !important;
+    color: #828282 !important;
+    outline: 0;
+}
+
+.es-search--simple .es-search-nav.es-search-nav--dropdowns>li.price-li {
+    background: none;
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+.es-search--simple .es-search-nav.es-search-nav--dropdowns>li.price-li .es-field-row.es-field-row__range .es-field {
+    margin: 0 4px;
+}
+.es-search--simple .es-search-nav.es-search-nav--dropdowns>li.price-li .es-field .select2-container .select2-selection--single,
+.es-search--simple .es-search-nav.es-search-nav--dropdowns>li.price-li .es-field-row.es-field-row__range .es-field {
+    height: 36px;
+}
+.es-search--simple .es-search-nav.es-search-nav--dropdowns>li.price-li .es-field-row.es-field-row__range {
+    margin: 0;
+}
+.es-search--simple .es-search-nav.es-search-nav--dropdowns>li.price-li .es-field .select2-container .select2-selection--single .select2-selection__rendered {
+    font-family: Roboto, Arial, Helvetica, sans-serif;
+    font-weight: 300;
+    line-height: 34px;
+}
+
+#search-2,
+#search-2-1 {
+    display: flex;
+}
+#search-2 button[type="submit"] {
+    display: none;
+}
