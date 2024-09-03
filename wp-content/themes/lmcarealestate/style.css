@@ -10,6 +10,10 @@ License: GNU General Public License v2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 */
 
+.ast-theme-transparent-header .main-header-menu ul .menu-link {
+    color: #333333 !important;
+}
+
 .lmc-search-simple form {
     justify-content: space-between;
 }
@@ -224,6 +228,7 @@ body .es-field.es-field--select label .es-field__label {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 15px;
+    margin-top: 15px;
 }
 .es-listing .es-listing__meta li {
     font-family: "Roboto", Sans-serif, serif !important;
@@ -262,12 +267,13 @@ body .es-field.es-field--select label .es-field__label {
 .es-listing .es-referencia,
 .es-listing .es-price {
     margin: 0 !important;
-    line-height: 1;
+    line-height: 20px !important;
 }
 .es-listing .es-badges {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 10px;
 }
 .es-listing .es-listing-link {
     display: inline-block;
@@ -285,4 +291,17 @@ body .es-field.es-field--select label .es-field__label {
 .es-listing .es-listing-link:hover {
     background: #4B4B4B;
     transform: scale(1.05);
+}
+.home-imoveis {
+    width: 100%;
+}
+.home-imoveis .es-listings[class*=" es-listings--grid-"][class*=" es-listings--grid-"] {
+    column-gap: 5em;
+    row-gap: 5em;
+}
+.home-imoveis .es-pagination {
+    display: none;
+}
+.es-listing__image .es-badges {
+    display: none;
 }
