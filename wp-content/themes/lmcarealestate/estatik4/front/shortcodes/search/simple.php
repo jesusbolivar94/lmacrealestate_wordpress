@@ -16,7 +16,7 @@ $main_fields_active = ! empty( $attributes['main_fields'] ) && ! empty( $attribu
 if ( $collapsed_fields_active || $main_fields_active || ! empty( $attributes['is_address_search_enabled'] ) ) : ?>
 
     <div class="lmc-search-simple <?php echo $container_classes; ?>" id="es-search--<?php echo $uniqid; ?>">
-        <form action="<?php echo $search_page_uri; ?>" role="search" method="get">
+        <form action="<?php echo esc_url( $_SERVER['REQUEST_URI'] ); ?>" role="search" method="get">
             <input type="hidden" name="es" value="1"/>
 
 			<?php if ( ! $search_page_exists ) : ?>
