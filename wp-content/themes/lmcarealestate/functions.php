@@ -446,3 +446,8 @@ remove_action( 'es_after_listings', 'es_powered_by' );
 remove_action( 'es_after_single_content', 'es_powered_by' );
 remove_action( 'es_after_authentication', 'es_powered_by' );
 remove_action( 'es_after_profile', 'es_powered_by' );
+
+function custom_move_fields(): void {
+    wp_enqueue_script( 'custom-move-fields', get_stylesheet_directory_uri() . '/js/custom-move-fields.js', array( 'jquery' ), null, true );
+}
+add_action( 'wp_enqueue_scripts', 'custom_move_fields' );
